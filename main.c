@@ -23,20 +23,24 @@
 
 int main(int argc, char *argv[])
 {
+	int status_key=1;
+	int info_key=1;
+	int add;
 
 	pPA_STATUS_T pst;
+	pPA_INFO_T pinfo;
 	pst = malloc(sizeof(PA_STATUS_T));
-	get_pa_status(tty_node,pst);
+	pinfo = malloc(sizeof(PA_INFO_T));
+	for(add=0;status_key==1&&add<20;add++){
+		status_key=get_pa_status(tty_node,pst);
+	}
 	printf("%d mv,%d mv,%d mv,%d mA,%d mv\n",pst->Vgs2_M,pst->Vgs1_M,pst->Vgs1_P,pst->curr,pst->dc_voltage);
+	for(add=0;info_key==1&&add<20;add++){
+		info_key=get_pa_info(tty_node,pinfo);
+	}
+	printf("name:%s\nsw_ver:%d\nsn:%s\nhw_ver:%s\nmarkprint:%d\n",pinfo->name,pinfo->sw_ver,pinfo->sn,pinfo->hw_ver,pinfo->markprint);
 
-	//printf("dc_voltage%d\n",pst->dc_voltage);
-	//printf("curr=    %d\n", pst->curr   );
-	//printf("Vgs1_P = %d\n", pst->Vgs1_P );
-	//printf("Vgs1_M = %d\n", pst->Vgs1_M );
-	//printf("Vgsq_P = %d\n", pst->Vgsq_P );
-	//printf("Vgsq_M = %d\n", pst->Vgsq_M );
-
-	//get_uart_frame(tty_node);
+	set_pa_status(tty_node,pinfo);
 
 
 	exit(0);

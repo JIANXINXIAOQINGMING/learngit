@@ -130,3 +130,20 @@ int OpenDev(char *Dev)
 		return fd;
 }
 
+int Open_info(char * device)
+{
+	int fd;
+	
+	fd = OpenDev(device);
+	if (fd > 0) {
+		set_speed(fd);
+	} else {
+		exit(1);
+	}
+
+	if (set_Parity(fd,8,1,'N')== FALSE) {
+		close(fd);
+		exit(1);
+	}
+	return fd;	
+}

@@ -22,9 +22,10 @@ typedef  PA_STATUS_T * pPA_STATUS_T;
 typedef struct PA_info
 {
 	char * name;
-	char * sw_ver;
+	char * sn;
+	int sw_ver;
 	char * hw_ver;
-	char * markprint;
+	int markprint;
 
 }PA_INFO_T;
 
