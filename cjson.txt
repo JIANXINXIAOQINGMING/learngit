@@ -1,0 +1,1 @@
+{"Vgs1_P_v":1850,"Vgs1_M_v":648,"Vgs2_P_v":2030,"Vgs2_M_v":560,"work_en":1,"Temperature":75}
